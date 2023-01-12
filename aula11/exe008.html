@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETRAN</title>
+
+    <style>
+        body{
+            background-attachment: fixed;
+        }
+        div#resultado{
+            margin-top: 30px;
+        }
+        input{
+            font: normal 14pt arial;
+            padding-left: 10px;
+            padding-top: 10px;
+            
+        }
+        h1{
+            font: normal 18pt;
+        }
+        div#velocidade_do_carro{
+            margin-top: 30px;
+            font: normal 18pt;
+        }
+    </style>
+</head>
+<body>
+    <h1> ---- Monitoramento de velocidade ---- </h1>
+    <div id="Velocidade_do_carro" > Velocidade do carro: </div> 
+    <input type="number" name="txtvelocidade" id="txtvelocidade"> <strong>km/h</strong>
+    <input type="button" value="verificar" onclick="calcular()">
+    <div id="resultado"> Resultado: </div>
+    <div id="alerta" > </div>
+
+    <script>
+        var txtv = window.document.getElementById("txtvelocidade")
+
+        function calcular() {
+            var alerta = window.document.querySelector("div#alerta")
+            var resultado = window.document.querySelector("div#resultado")
+            var velocidade = Number(txtv.value)
+            resultado.innerHTML = `Sua velocidade atual é de <strong>${velocidade}km/h.</strong>`
+            if (velocidade > 80){
+                resultado.innerHTML += ` Por isso, você foi <strong> MULTADO </strong> por ultrapassar o limite de velocidade.`
+            }
+            alerta.innerHTML = `<p> Dirija sempre com o cinto de segurança!<p>`
+        }
+    </script>
+</body>
+</html>
